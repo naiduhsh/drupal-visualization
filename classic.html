@@ -1,0 +1,142 @@
+<html>
+
+<head>
+
+  <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.0.js"></script>
+  <script type="text/javascript" src="loader.js"></script>
+
+  <script type="text/javascript">
+    google.charts.load('current', {
+      'packages': ['gauge', 'corechart']
+    });
+    google.charts.setOnLoadCallback(drawChart);
+    var max_uid = 3402278;
+
+    function drawChart(timestamp) {
+      if (!timestamp) {
+        timestamp = "986038980";
+      }
+      var jsonData = $.ajax({
+        url: "https://www.drupal.org/api-d7/user.json?status=1&sort=uid&limit=1&direction=DESC&created=" + timestamp,
+        dataType: "json",
+        async: false,
+        success: function(result) {
+          var te = result.list[0].uid;
+          var data = google.visualization.arrayToDataTable([
+            ['Label', 'Value'],
+            ['Drupalers', parseInt(te)],
+          ]);
+
+          var options = {
+            width: 960,
+            height: 420,
+            redFrom: 90,
+            redTo: 1000,
+            yellowFrom: 75,
+            yellowTo: 90,
+            minorTicks: 2,
+            max: max_uid
+          };
+
+          var chart = new google.visualization.Gauge(document.getElementById('chart_div'));
+
+          chart.draw(data, options);
+
+
+        }
+
+      });
+
+
+      $('#yearid').change(function() {
+        var test = $(this).val();
+
+        drawChart(test);
+
+      });
+
+    }
+	
+	google.charts.setOnLoadCallback(drawChart1	);
+
+ function drawChart1() {
+ 
+ $.ajax({
+        url: "https://www.drupal.org/api-d7/node.json?type=project_issue&field_project=3060&field_issue_status=8&field_issue_version=8.0.x-dev&field_issue_priority=400",
+        dataType: "json",	
+        async: false,
+        success: function(result) {
+			console.log(result);
+		}
+});
+        var data = google.visualization.arrayToDataTable([
+          ['Task', 'Hours per Day'],
+          ['Work',     11],
+          ['Eat',      2],
+          ['Commute',  2],
+          ['Watch TV', 2],
+          ['Sleep',    7]
+        ]);
+
+        var options = {
+          title: 'My Daily Activities',
+		  backgroundColor: {fill: 'transparent'}
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+        chart.draw(data, options);	
+		}
+  </script>
+</head>
+
+<body>
+
+
+  <select id="yearid">
+	
+	<option value="986041080">2001</option>
+	
+		<option value="1088009623">2004</option>
+		<option value="1167273390">2006</option>
+		<option value="1287791078">2010</option>
+	<option value="1455797486">2016</option>
+	</select>
+
+	
+	
+
+  <br>
+  <br>
+
+  <div id="chart_div" style="width: 400px; height: 120px;"></div>
+  
+  
+  <br>
+  <br>
+
+  <div id="piechart" style="width: 900px; height: 500px;"></div>
+</body>
+
+
+<style>
+div#chart_div {
+    display: block;
+    overflow: hidden;
+    clear: left;
+    height: 467px!important;
+    float: left;
+}
+div#piechart
+{
+margin-top: -251px;
+width: 800px !important;
+    height: 500px !important;
+    clear: right;
+    overflow: hidden;
+}
+body {
+background: lightblue;
+}
+	</style>
+</html>
