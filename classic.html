@@ -1,7 +1,7 @@
 <html>
 
 <head>
-
+<title>DRUPAL CLASSIC 2016</title>
   <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.0.js"></script>
   <script type="text/javascript" src="loader.js"></script>
 
@@ -79,7 +79,7 @@
         ]);
 
         var options = {
-          title: 'My Daily Activities',
+         
 		  backgroundColor: {fill: 'transparent'}
         };
 
@@ -91,8 +91,12 @@
 </head>
 
 <body>
+<header>
+<div class="tile"><marquee behavior="alternate" scrollamount="5">DRUPAL CLASSIC 2016</marquee></div>
+</header>
 
-
+<div class="select">
+<span class="slectyr">SELECT&nbsp;A&nbsp;YEAR: </span>
   <select id="yearid">
 	
 	<option value="986041080">2001</option>
@@ -102,14 +106,17 @@
 		<option value="1287791078">2010</option>
 	<option value="1455797486">2016</option>
 	</select>
-
+</div>
 	
 	
 
   <br>
   <br>
+  
 
-  <div id="chart_div" style="width: 400px; height: 120px;"></div>
+  <div id="chart_div" style="width: 400px; height: 120px;">
+ 
+  </div>
   
   
   <br>
@@ -129,14 +136,64 @@ div#chart_div {
 }
 div#piechart
 {
-margin-top: -251px;
-width: 800px !important;
+margin-top: -83px;
+width: 580px !important;
     height: 500px !important;
     clear: right;
+	display:block;
     overflow: hidden;
 }
 body {
-background: lightblue;
+background: url("bg5.jpg");
+background-size:100% 100%;
+background-repeat:no-repeat;
+margin:0;
+padding:0;
+width: 1000px;
+    margin: 0 auto;
+}
+#yearid{
+background: black;
+    color: white;
+}
+.slectyr
+{
+color:white;
+   
+}
+div#piechart:before {
+    /* position: absolute; */
+    content: 'PROJECT ISSUE REPORTS';
+    color: #fff;
+	display:inline-block;
+    margin-left: 203px;
+   
+	background: none;
+    border: 1px solid white;
+    padding: 7px;
+    width: 191px;
+    padding: 7px;
+	margin-bottom:-40px;
+	}
+.select{
+    
+	background: none;
+    border: 1px solid white;
+    padding: 2px;
+    width: 187px;
+    padding: 7px;
+    margin-top: 50px;
+    margin-left: 107px;
+    margin-bottom: -30px;
+	}
+	
+header{
+height:50px;
+color:#eee;
+font-size:50px;
+font-weight:boder;
+width:500px;
+margin:0 auto;
 }
 	</style>
 </html>
